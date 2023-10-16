@@ -35,5 +35,6 @@ void updateProgress(Library *library, int book_id, int current_page);
 void searchBooks(Library *library, const char *query, int searchType);
 void changeBookTags(Library *library, int book_id);
 void listBooks(Library *library);
+void filterBooksByTag(Library *library, const char *tag);
 
 #endif // LIBRARY_H

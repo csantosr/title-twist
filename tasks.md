@@ -40,7 +40,7 @@
 - [x] 5.4. Función para buscar libros (por título, autor, etiqueta, etc.).
 - [x] 5.5. Función para listar libros en la biblioteca.
 - [x] 5.6. Función para etiquetar libros.
-- [ ] 5.7. Función para filtrar libros por etiquetas.
+- [x] 5.7. Función para filtrar libros por etiquetas.
 
 ### 6. Persistencia de datos:
 - [x] 6.1. Función para guardar la biblioteca en un archivo.

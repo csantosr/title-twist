@@ -202,3 +202,29 @@ void listBooks(Library *library) {
         current = current->next;
     }
 }
+
+void filterBooksByTag(Library *library, const char *tag) {
+    BookNode *current = library->books_head;
+    int found = 0; // Variable para comprobar si se encontraron libros con la etiqueta deseada
+    
+    printf("\nBooks with tag '%s':\n", tag);
+    printf("--------------------\n");
+    
+    while (current) {
+        for (int i = 0; i < MAX_TAGS; i++) {
+            if (strcmp(current->book.tags[i], tag) == 0) { // Comprobar si la etiqueta actual coincide con la deseada
+                printf("ID: %d\n", current->book.id);
+                printf("Title: %s\n", current->book.title);
+                printf("Author: %s\n", current->book.author);
+                printf("--------------------\n");
+                found = 1;
+                break; // Salir del bucle de etiquetas una vez que se encuentra una coincidencia
+            }
+        }
+        current = current->next;
+    }
+    
+    if (!found) {
+        printf("No books found with the tag '%s'.\n", tag);
+    }
+}

@@ -14,7 +14,8 @@ void printMenu()
     printf("6. Search Books\n");
     printf("7. Change Book Tags\n");
     printf("8. List all books\n");
-    printf("9. Exit\n");
+    printf("9. Filter by tag\n");
+    printf("10. Exit\n");
     printf("> ");
 }
 
@@ -152,6 +153,14 @@ int main()
             break;
         }
         case 9:
+        {
+            char tag[MAX_TAG_LENGTH];
+            printf("Enter the tag to filter by: ");
+            scanf(" %[^\n]", tag);
+            filterBooksByTag(&library, tag);
+            break;
+        }
+        case 10:
             printf("Exiting... \n");
             saveLibraryToFile(&library, "./library.dat");
             freeLibrary(&library);
