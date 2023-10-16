@@ -3,6 +3,7 @@
 
 #define MAX_NICKNAME_LENGTH 50
 #define DATE_STRING_LENGTH 11  // Formato "YYYY-MM-DD\0"
+#include <time.h>
 
 typedef enum {
     ACTIVE,
@@ -12,8 +13,8 @@ typedef enum {
 typedef struct {
     int book_id;
     char friend_nickname[MAX_NICKNAME_LENGTH];
-    char loan_date[DATE_STRING_LENGTH];
-    char return_date[DATE_STRING_LENGTH];
+    time_t loan_date;
+    time_t return_date;
     LoanStatus status;
 } Loan;
 

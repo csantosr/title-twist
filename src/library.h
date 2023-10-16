@@ -25,5 +25,7 @@ void addBook(Library *library, Book book);
 void deleteBook(Library *library, int book_id);
 void editBook(Library *library, int book_id, Book new_book_data);
 void displayBookDetails(Book book);
+void loanBook(Library *library, int book_id, char *friend_nickname);
+void returnBook(Library *library, int book_id);
 
 #endif // LIBRARY_H

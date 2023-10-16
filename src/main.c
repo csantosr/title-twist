@@ -1,5 +1,6 @@
 #include "library.h"
 #include "book.h"
+#include "persistence.h"
 #include <stdio.h>
 
 void printMenu() {
@@ -14,7 +15,7 @@ void printMenu() {
 
 int main() {
     Library library;
-    initializeLibrary(&library);
+    loadLibraryFromFile(&library, "./library.dat");
 
     int choice;
     int id;
@@ -41,6 +42,7 @@ int main() {
                 // As an example, we'll skip the tags for simplicity. They can be added similarly.
                 addBook(&library, book);
                 printf("Book added successfully!\n");
+                saveLibraryToFile(&library, "./library.dat");
                 break;
             }
             case 2:
@@ -48,6 +50,7 @@ int main() {
                 scanf("%d", &id);
                 deleteBook(&library, id);
                 printf("Book deleted (if it existed).\n");
+                saveLibraryToFile(&library, "./library.dat");
                 break;
             case 3: {
                 Book book;
@@ -65,6 +68,7 @@ int main() {
                 scanf("%f", &book.rating);
                 editBook(&library, id, book);
                 printf("Book edited (if it existed).\n");
+                saveLibraryToFile(&library, "./library.dat");
                 break;
             }
             case 4:
@@ -84,12 +88,14 @@ int main() {
                 break;
             case 5:
                 printf("Exiting... \n");
+                saveLibraryToFile(&library, "./library.dat");
                 freeLibrary(&library);
                 return 0;
             default:
                 printf("Invalid choice.\n");
         }
     }
+    saveLibraryToFile(&library, "./library.dat");
     freeLibrary(&library);
 
     return 0;
