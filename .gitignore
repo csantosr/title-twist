@@ -52,3 +52,5 @@ Mkfile.old
 dkms.conf
 
 .vscode/
+src/titletwist
+src/library.dat

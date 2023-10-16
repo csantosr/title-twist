@@ -43,9 +43,9 @@
 - [ ] 5.7. Función para filtrar libros por etiquetas.
 
 ### 6. Persistencia de datos:
-- [ ] 6.1. Función para guardar la biblioteca en un archivo.
-- [ ] 6.2. Función para cargar la biblioteca desde un archivo.
-- [ ] 6.3. Decidir el formato del archivo (por ejemplo, binario, texto, JSON, etc.).
+- [x] 6.1. Función para guardar la biblioteca en un archivo.
+- [x] 6.2. Función para cargar la biblioteca desde un archivo.
+- [x] 6.3. Decidir el formato del archivo (.dat por el momento).
 
 ### 7. Historial de préstamos:
 - [ ] 7.1. Función para ver todos los préstamos.
