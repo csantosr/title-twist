@@ -33,5 +33,6 @@ void loanBook(Library *library, int book_id, char *friend_nickname);
 void returnBook(Library *library, int book_id);
 void updateProgress(Library *library, int book_id, int current_page);
 void searchBooks(Library *library, const char *query, int searchType);
+void changeBookTags(Library *library, int book_id);
 
 #endif // LIBRARY_H

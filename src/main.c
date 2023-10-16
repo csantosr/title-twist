@@ -11,8 +11,9 @@ void printMenu()
     printf("3. Edit Book\n");
     printf("4. Display Book Details\n");
     printf("5. Update Progress\n");
-    printf("6. Search Books\n"); // Nueva opción
-    printf("7. Exit\n");
+    printf("6. Search Books\n");
+    printf("7. Change Book Tags\n");
+    printf("8. Exit\n");
     printf("> ");
 }
 
@@ -46,7 +47,15 @@ int main()
             scanf(" %[^\n]", book.review);
             printf("Enter book rating (0 to 5): ");
             scanf("%f", &book.rating);
-            // As an example, we'll skip the tags for simplicity. They can be added similarly.
+            int num_tags;
+            printf("Enter number of tags (0-%d): ", MAX_TAGS);
+            scanf("%d", &num_tags);
+
+            for (int i = 0; i < num_tags; i++)
+            {
+                printf("Enter tag %d: ", i + 1);
+                scanf(" %[^\n]", book.tags[i]);
+            }
             addBook(&library, book);
             printf("Book added successfully!\n");
             saveLibraryToFile(&library, "./library.dat");
@@ -74,6 +83,15 @@ int main()
             scanf(" %[^\n]", book.review);
             printf("Enter new book rating (0 to 5): ");
             scanf("%f", &book.rating);
+            int num_tags;
+            printf("Enter number of tags (0-%d): ", MAX_TAGS);
+            scanf("%d", &num_tags);
+
+            for (int i = 0; i < num_tags; i++)
+            {
+                printf("Enter tag %d: ", i + 1);
+                scanf(" %[^\n]", book.tags[i]);
+            }
             editBook(&library, id, book);
             printf("Book edited (if it existed).\n");
             saveLibraryToFile(&library, "./library.dat");
@@ -120,6 +138,14 @@ int main()
             break;
         }
         case 7:
+        {
+            printf("Enter book ID to change tags: ");
+            int id;
+            scanf("%d", &id);
+            changeBookTags(&library, id);
+            break;
+        }
+        case 8:
             printf("Exiting... \n");
             saveLibraryToFile(&library, "./library.dat");
             freeLibrary(&library);

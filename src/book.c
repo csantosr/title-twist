@@ -74,7 +74,7 @@ void displayBookDetails(Book book) {
     printf("Rating: %.2f\n", book.rating);
     printf("Tags: ");
     for (int i = 0; i < MAX_TAGS && book.tags[i][0]; i++) {
-        printf("%s ", book.tags[i]);
+        printf("%s, ", book.tags[i]);
     }
     printf("\n");
 }
@@ -147,4 +147,39 @@ void searchBooks(Library *library, const char *query, int searchType) {
     if (!found) {
         printf("No books found for the query '%s'.\n", query);
     }
+}
+
+void changeBookTags(Library *library, int book_id) {
+    BookNode *current = library->books_head;
+
+    // Encuentra el libro por id
+    while (current) {
+        if (current->book.id == book_id) {
+            break;
+        }
+        current = current->next;
+    }
+
+    if (!current) {
+        printf("Book not found.\n");
+        return;
+    }
+
+    printf("Editing tags for '%s'\n", current->book.title);
+
+    int num_tags;
+    printf("Enter number of tags (0-%d): ", MAX_TAGS);
+    scanf("%d", &num_tags);
+
+    // Reset existing tags
+    for (int i = 0; i < MAX_TAGS; i++) {
+        current->book.tags[i][0] = '\0';
+    }
+
+    for (int i = 0; i < num_tags; i++) {
+        printf("Enter tag %d: ", i + 1);
+        scanf(" %[^\n]", current->book.tags[i]);
+    }
+
+    printf("Tags updated successfully!\n");
 }
