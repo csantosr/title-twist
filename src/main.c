@@ -15,9 +15,11 @@ void printMenu()
     printf("7. Change Book Tags\n");
     printf("8. List all books\n");
     printf("9. Filter by tag\n");
-    printf("10. Display all loans\n");
-    printf("11. Filter loans by status\n");
-    printf("12. Exit\n");
+    printf("10. Loan a book\n");
+    printf("11. Loan is returned\n");
+    printf("12. Display all loans\n");
+    printf("13. Filter loans by status\n");
+    printf("14. Exit\n");
     printf("> ");
 }
 
@@ -163,9 +165,21 @@ int main()
             break;
         }
         case 10:
-            displayAllLoans(&library);
+            printf("Enter book ID to loan: ");
+            scanf("%d", &id);
+            char friend_nickname[MAX_NICKNAME_LENGTH];
+            printf("Enter your friend's name: ");
+            scanf(" %[^\n]", friend_nickname);
+            loanBook(&library, id, friend_nickname);
             break;
         case 11:
+            printf("Enter book ID to receive: ");
+            scanf("%d", &id);
+            returnBook(&library, id);
+        case 12:
+            displayAllLoans(&library);
+            break;
+        case 13:
         {
             int status;
             printf("Enter loan status (1 for Active, 2 for Returned): ");
@@ -185,7 +199,7 @@ int main()
             }
             break;
         }
-        case 12:
+        case 14:
             printf("Exiting... \n");
             saveLibraryToFile(&library, "./library.dat");
             freeLibrary(&library);
