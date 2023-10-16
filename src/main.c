@@ -15,7 +15,9 @@ void printMenu()
     printf("7. Change Book Tags\n");
     printf("8. List all books\n");
     printf("9. Filter by tag\n");
-    printf("10. Exit\n");
+    printf("10. Display all loans\n");
+    printf("11. Filter loans by status\n");
+    printf("12. Exit\n");
     printf("> ");
 }
 
@@ -161,6 +163,29 @@ int main()
             break;
         }
         case 10:
+            displayAllLoans(&library);
+            break;
+        case 11:
+        {
+            int status;
+            printf("Enter loan status (1 for Active, 2 for Returned): ");
+            scanf("%d", &status);
+
+            if (status == 1)
+            {
+                filterLoansByStatus(&library, ACTIVE);
+            }
+            else if (status == 2)
+            {
+                filterLoansByStatus(&library, RETURNED);
+            }
+            else
+            {
+                printf("Invalid status choice.\n");
+            }
+            break;
+        }
+        case 12:
             printf("Exiting... \n");
             saveLibraryToFile(&library, "./library.dat");
             freeLibrary(&library);

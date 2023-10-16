@@ -48,8 +48,8 @@
 - [x] 6.3. Decidir el formato del archivo (.dat por el momento).
 
 ### 7. Historial de préstamos:
-- [ ] 7.1. Función para ver todos los préstamos.
-- [ ] 7.2. Función para filtrar préstamos (activos/devueltos).
+- [x] 7.1. Función para ver todos los préstamos.
+- [x] 7.2. Función para filtrar préstamos (activos/devueltos).
 
 ### 8. Pruebas:
 - [ ] 8.1. Probar cada función individualmente.

@@ -98,3 +98,73 @@ void returnBook(Library *library, int book_id) {
 
     printf("Libro con ID %d registrado como devuelto.\n", book_id);
 }
+
+void displayAllLoans(Library *library) {
+    LoanNode *current = library->loans_head;
+
+    printf("\nAll Loans:\n");
+    printf("--------------------\n");
+
+    if (!current) {
+        printf("No loans registered.\n");
+        return;
+    }
+
+    while (current) {
+        printf("Book ID: %d\n", current->loan.book_id);
+        printf("Friend Nickname: %s\n", current->loan.friend_nickname);
+        printf("Loan Date: %s", ctime(&current->loan.loan_date));  // ctime convierte time_t a string
+
+        if (current->loan.status == ACTIVE) {
+            printf("Status: Active\n");
+        } else {
+            printf("Return Date: %s", ctime(&current->loan.return_date));
+            printf("Status: Returned\n");
+        }
+
+        printf("--------------------\n");
+
+        current = current->next;
+    }
+}
+
+void filterLoansByStatus(Library *library, LoanStatus status) {
+    LoanNode *current = library->loans_head;
+    int found = 0;
+
+    printf("\nFiltered Loans:\n");
+    printf("--------------------\n");
+
+    if (!current) {
+        printf("No loans registered.\n");
+        return;
+    }
+
+    while (current) {
+        if (current->loan.status == status) {
+            found = 1;
+
+            printf("Book ID: %d\n", current->loan.book_id);
+            printf("Friend Nickname: %s\n", current->loan.friend_nickname);
+            printf("Loan Date: %s", ctime(&current->loan.loan_date)); 
+
+            if (current->loan.status == ACTIVE) {
+                printf("Status: Active\n");
+            } else {
+                printf("Return Date: %s", ctime(&current->loan.return_date));
+                printf("Status: Returned\n");
+            }
+
+            printf("--------------------\n");
+        }
+        current = current->next;
+    }
+
+    if (!found) {
+        if (status == ACTIVE) {
+            printf("No active loans.\n");
+        } else {
+            printf("No returned loans.\n");
+        }
+    }
+}
