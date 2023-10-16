@@ -36,8 +36,8 @@
 ### 5. Funcionalidades adicionales:
 - [x] 5.1. Función para prestar un libro.
 - [x] 5.2. Función para registrar un libro devuelto.
-- [ ] 5.3. Función para calcular automáticamente el progreso.
-- [ ] 5.4. Función para buscar libros (por título, autor, etiqueta, etc.).
+- [x] 5.3. Función para actualizar fácilmente las páginas leidas y calcular automáticamente el progreso.
+- [x] 5.4. Función para buscar libros (por título, autor, etiqueta, etc.).
 - [ ] 5.5. Función para listar libros en la biblioteca.
 - [ ] 5.6. Función para etiquetar libros.
 - [ ] 5.7. Función para filtrar libros por etiquetas.

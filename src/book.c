@@ -78,3 +78,73 @@ void displayBookDetails(Book book) {
     }
     printf("\n");
 }
+
+void updateProgress(Library *library, int book_id, int current_page) {
+    // Buscar el libro en la lista de libros usando el book_id
+    BookNode *current_book = library->books_head;
+    while (current_book) {
+        if (current_book->book.id == book_id) {
+            break;
+        }
+        current_book = current_book->next;
+    }
+
+    if (!current_book) {
+        printf("Libro no encontrado.\n");
+        return;
+    }
+
+    // Actualizar la página actual
+    current_book->book.current_page = current_page;
+
+    // Calcular el progreso
+    if (current_book->book.num_pages != 0) {
+        current_book->book.progress = (float)current_page / current_book->book.num_pages * 100.0;
+        if (current_book->book.progress > 100.0) {
+            current_book->book.progress = 100.0;
+        }
+    } else {
+        current_book->book.progress = 0.0;
+    }
+
+    printf("Libro '%s' actualizado a la página %d (%.2f%% completo).\n", current_book->book.title, current_page, current_book->book.progress);
+}
+
+void searchBooks(Library *library, const char *query, int searchType) {
+    BookNode *current = library->books_head;
+    int found = 0; // Flag para determinar si se encontró algún libro
+
+    while (current) {
+        int match = 0; // Flag para determinar si el libro actual coincide con la consulta
+        switch (searchType) {
+            case SEARCH_TITLE:
+                if (strstr(current->book.title, query) != NULL) {
+                    match = 1;
+                }
+                break;
+            case SEARCH_AUTHOR:
+                if (strstr(current->book.author, query) != NULL) {
+                    match = 1;
+                }
+                break;
+            case SEARCH_TAG:
+                for (int i = 0; i < MAX_TAGS && current->book.tags[i][0]; i++) {
+                    if (strstr(current->book.tags[i], query) != NULL) {
+                        match = 1;
+                        break;
+                    }
+                }
+                break;
+        }
+
+        if (match) {
+            displayBookDetails(current->book);
+            found = 1;
+        }
+        current = current->next;
+    }
+
+    if (!found) {
+        printf("No books found for the query '%s'.\n", query);
+    }
+}
