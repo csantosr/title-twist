@@ -183,3 +183,22 @@ void changeBookTags(Library *library, int book_id) {
 
     printf("Tags updated successfully!\n");
 }
+
+void listBooks(Library *library) {
+    BookNode *current = library->books_head;
+    
+    if (!current) {
+        printf("No books in the library.\n");
+        return;
+    }
+    
+    printf("\nListing all books:\n");
+    printf("--------------------\n");
+    while (current) {
+        printf("ID: %d\n", current->book.id);
+        printf("Title: %s\n", current->book.title);
+        printf("Author: %s\n", current->book.author);
+        printf("--------------------\n");
+        current = current->next;
+    }
+}

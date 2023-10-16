@@ -13,7 +13,8 @@ void printMenu()
     printf("5. Update Progress\n");
     printf("6. Search Books\n");
     printf("7. Change Book Tags\n");
-    printf("8. Exit\n");
+    printf("8. List all books\n");
+    printf("9. Exit\n");
     printf("> ");
 }
 
@@ -146,6 +147,11 @@ int main()
             break;
         }
         case 8:
+        {
+            listBooks(&library);
+            break;
+        }
+        case 9:
             printf("Exiting... \n");
             saveLibraryToFile(&library, "./library.dat");
             freeLibrary(&library);

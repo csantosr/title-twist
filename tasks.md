@@ -38,7 +38,7 @@
 - [x] 5.2. Función para registrar un libro devuelto.
 - [x] 5.3. Función para actualizar fácilmente las páginas leidas y calcular automáticamente el progreso.
 - [x] 5.4. Función para buscar libros (por título, autor, etiqueta, etc.).
-- [ ] 5.5. Función para listar libros en la biblioteca.
+- [x] 5.5. Función para listar libros en la biblioteca.
 - [x] 5.6. Función para etiquetar libros.
 - [ ] 5.7. Función para filtrar libros por etiquetas.
 
