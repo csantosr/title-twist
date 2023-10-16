@@ -1,5 +1,3 @@
-¡Entendido! Aquí tienes una lista de tareas estructurada para el desarrollo de **TitleTwist** en el lenguaje C:
-
 ### 1. Configuración inicial del proyecto:
 - [x] 1.1. Crear un nuevo repositorio o directorio para el proyecto.
 - [x] 1.2. Inicializar un sistema de control de versiones (opcional, pero recomendado, como Git).
@@ -64,5 +62,3 @@
 - [ ] 10.1. Hacer una revisión final del proyecto.
 - [ ] 10.2. Guardar y hacer commit de todos los cambios (si estás usando un sistema de control de versiones).
 - [ ] 10.3. Considerar compartir el proyecto en plataformas como GitHub.
-
-Estas tareas te darán una buena hoja de ruta para desarrollar **TitleTwist**. Por supuesto, durante el proceso, podrías encontrar que necesitas ajustar algunas tareas o agregar subtareas según las necesidades que surjan. ¡Buena suerte con tu proyecto!
