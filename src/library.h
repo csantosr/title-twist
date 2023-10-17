@@ -36,5 +36,7 @@ void searchBooks(Library *library, const char *query, int searchType);
 void changeBookTags(Library *library, int book_id);
 void listBooks(Library *library);
 void filterBooksByTag(Library *library, const char *tag);
+void displayAllLoans(Library *library);
+void filterLoansByStatus(Library *library, LoanStatus status);
 
 #endif // LIBRARY_H

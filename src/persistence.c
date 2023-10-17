@@ -27,8 +27,22 @@ void saveLibraryToFile(Library *library, const char *filename) {
 void loadLibraryFromFile(Library *library, const char *filename) {
     FILE *file = fopen(filename, "rb");
     if (!file) {
-        printf("Error al abrir el archivo para cargar.\n");
-        return;
+        printf("File not found, creating a new one...\n");
+
+        // Try to create a new file
+        file = fopen(filename, "wb");
+        if (!file) {
+            printf("Error creating new file.\n");
+            return;
+        }
+        
+        // Close the newly created file and then reopen it for reading
+        fclose(file);
+        file = fopen(filename, "rb");
+        if (!file) {
+            printf("Error opening the new file for reading.\n");
+            return;
+        }
     }
 
     initializeLibrary(library);  // Asegúrese de que la biblioteca esté vacía antes de cargarla
